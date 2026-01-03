@@ -3,7 +3,8 @@
 My personal Gruvbox-themed Hyprland rice for Arch Linux.
 
 ## Preview
-<img width="1920" height="1080" alt="preview" src="https://github.com/user-attachments/assets/ab16a24b-ea3e-423f-a236-b3f865be7a7d" />
+<img width="1920" height="1080" alt="preview" src="https://github.com/user-attachments/assets/ab16a24b-ea3e-423f-a236-b3f865be7a7d<img width="1920" height="1080" alt="Screenshot-2026-01-03_15:09:24" src="https://github.com/user-attachments/assets/7f5ed3f5-531d-4541-83ef-f41d0b3b1249" />
+" />
 
 ## Features
 - **WM**: Hyprland
