@@ -21,8 +21,8 @@ cd arch-gruvbox
 
 # Install dependencies
 sudo pacman -S hyprland waybar rofi rofi-emoji hypridle hyprlock hyprpicker \
-       mako kitty wlogout brightnessctl nvim yazi thunar imv mpv
-paru -S hyprshade getnf
+       mako kitty wlogout brightnessctl nvim yazi thunar imv mpv wl-clipboard wl-clip-persist
+paru -S hyprshade getnf clipse 
 
 # Install Nerd fonts
 getnf
