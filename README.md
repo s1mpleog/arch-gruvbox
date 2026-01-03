@@ -21,7 +21,7 @@ cd arch-gruvbox
 
 # Install dependencies
 sudo pacman -S hyprland waybar rofi rofi-emoji hypridle hyprlock hyprpicker \
-       mako kitty wlogout brightnessctl
+       mako kitty wlogout brightnessctl nvim yazi thunar
 paru -S hyprshade
 
 # Backup your configs
@@ -34,6 +34,7 @@ cp -r rofi ~/.config/
 cp -r mako ~/.config/
 cp -r kitty ~/.config/
 cp -r wlogout ~/.config/
+cp -r nvim ~/.config/
 
 #Copy Wallpaper (optional)
 cp Cat_at_Play.png ~/Pictures/Wallpapers/
