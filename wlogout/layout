@@ -1,0 +1,30 @@
+{
+    "label" : "lock",
+    "action" : "loginctl lock-session",
+    "text" : "Lock"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Reboot"
+}
+{
+    "label" : "shutdown",
+    "action" : "systemctl poweroff",
+    "text" : "Shutdown"
+}
+{
+    "label" : "logout",
+    "action" : "loginctl terminate-session self",
+    "text" : "Logout"
+}
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "Suspend"
+}
+{
+    "label" : "reboot-to-fw",
+    "action" : "systemctl reboot --firmware-setup",
+    "text" : "Reboot to UEFI"
+}

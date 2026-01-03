@@ -1,0 +1,29 @@
+disable_ligatures no
+enable_audio_bell no
+
+scrollbar_handle_opacity      0
+scrollbar_track_opacity       0
+scrollbar_track_hover_opacity 0
+confirm_os_window_close       0
+
+window_padding_width 10
+
+font_size 14.0
+
+# background_opacity 0.5
+# blur_radius 12
+
+disable_ligatures always
+
+font_family         Intel One Mono Medium
+bold_font           Intel One Mono Bold
+italic_font         Intel One Mono Medium Italic
+bold_italic_font    Intel One Mono Bold Italic
+
+
+# # BEGIN_KITTY_FONTS
+# font_family      family="Intel One Mono"
+# bold_font        auto
+# italic_font      auto
+# bold_italic_font auto
+# # END_KITTY_FONTS
