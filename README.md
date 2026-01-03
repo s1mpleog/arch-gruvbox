@@ -39,6 +39,10 @@ cp -r kitty ~/.config/
 cp -r wlogout ~/.config/
 cp -r nvim ~/.config/
 
+# if you prefer alacritty over kitty
+sudo pacman -S alacritty
+cp -r alacritty ~/.config/
+
 #Copy Wallpaper (optional)
 cp Cat_at_Play.png ~/Pictures/Wallpapers/
 
