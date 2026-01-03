@@ -35,6 +35,9 @@ cp -r mako ~/.config/
 cp -r kitty ~/.config/
 cp -r wlogout ~/.config/
 
+#Copy Wallpaper (optional)
+cp Cat_at_Play.png ~/Pictures/Wallpapers/
+
 # GTK Theme
 cp -r Gruvbox-Material-Dark ~/.themes/
 ```
