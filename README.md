@@ -22,7 +22,10 @@ cd arch-gruvbox
 # Install dependencies
 sudo pacman -S hyprland waybar rofi rofi-emoji hypridle hyprlock hyprpicker \
        mako kitty wlogout brightnessctl nvim yazi thunar
-paru -S hyprshade
+paru -S hyprshade getnf
+
+# Install Nerd fonts
+getnf
 
 # Backup your configs
 cp -r ~/.config/hypr ~/.config/hypr.backup
