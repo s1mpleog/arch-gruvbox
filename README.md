@@ -51,3 +51,4 @@ See `hypr/keybinds.conf` for full list
 
 ## Credits
 - Gruvbox theme by morhetz
+- Astro Nvim https://astronvim.com/
