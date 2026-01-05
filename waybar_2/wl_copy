@@ -10,8 +10,7 @@
 
 window#waybar {
     background-color: rgba(40, 40, 40, 0.90);
-    /* background: transparent; */
-    color: #ddc7a1;
+    color: #ebdbb2;
     transition: background-color 0.2s;
 }
 
@@ -33,14 +32,14 @@ window#waybar {
 }
 
 #workspaces button.active {
-    color: #d8a657;
+    color: #fabd2f;
     background-color: #32302f;
     border: 2px solid #3c3836;
 }
 
 #workspaces button:hover {
     background-color: #32302f;
-    color: #ddc7a1;
+    color: #d5c4a1;
 }
 
 /* Window title */
@@ -57,7 +56,7 @@ window#waybar {
     margin: 6px 12px;
     padding: 0 20px;
     background: linear-gradient(90deg, #32302f 0%, #3c3836 100%);
-    color: #ddc7a1;
+    color: #ebdbb2;
     border-radius: 8px;
     font-weight: 700;
     border: 1px solid #504945;
@@ -91,51 +90,51 @@ window#waybar {
 }
 
 #cpu {
-    color: #a9b665;
+    color: #b8bb26;
 }
 
 #memory {
-    color: #d8a657;
+    color: #fabd2f;
 }
 
 #backlight {
-    color: #e78a4e;
+    color: #fe8019;
 }
 
 #battery {
-    color: #89b482;
+    color: #8ec07c;
 }
 
 #battery.charging {
-    color: #a9b665;
+    color: #b8bb26;
     background-color: #32302f;
 }
 
 #battery.warning:not(.charging) {
-    color: #d8a657;
+    color: #fabd2f;
     background-color: #32302f;
 }
 
 #battery.critical:not(.charging) {
-    background-color: #ea6962;
-    color: #ddc7a1;
-    border-color: #ea6962;
+    background-color: #cc241d;
+    color: #fbf1c7;
+    border-color: #fb4934;
     animation: blink 0.8s linear infinite alternate;
 }
 
 @keyframes blink {
     to {
-        background-color: #ea6962;
-        border-color: #c14a4a;
+        background-color: #fb4934;
+        border-color: #cc241d;
     }
 }
 
 #network {
-    color: #7daea3;
+    color: #83a598;
 }
 
 #network.disconnected {
-    color: #ea6962;
+    color: #fb4934;
     background-color: #32302f;
 }
 
@@ -162,7 +161,7 @@ window#waybar {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #ea6962;
+    background-color: #cc241d;
     border-radius: 6px;
 }
 
@@ -171,7 +170,7 @@ window#waybar {
     padding: 0 14px;
     border-radius: 8px;
     background-color: #32302f;
-    color: #7daea3;
+    color: #83a598;
     border: 1px solid #3c3836;
     transition: all 0.2s ease;
 }
@@ -196,7 +195,7 @@ window#waybar {
 }
 
 #idle_inhibitor.activated {
-    color: #d8a657;  /* Yellow when active */
+    color: #fabd2f;  /* Yellow when active */
     background-color: #3c3836;
 }
 
@@ -207,14 +206,14 @@ window#waybar {
 
 /* Tooltips */
 tooltip {
-    background-color: #282828;
+    background-color: #1d2021;
     border: 2px solid #504945;
     border-radius: 8px;
-    color: #ddc7a1;
+    color: #ebdbb2;
     padding: 8px;
 }
 
 tooltip label {
-    color: #ddc7a1;
+    color: #ebdbb2;
     padding: 4px;
 }
