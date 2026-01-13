@@ -10,7 +10,7 @@ configuration {
   me-accept-entry:            [ MousePrimary, MouseSecondary, MouseDPrimary ];
 }
 
-@theme "~/.config/rofi/theme/gruvbox-dark.rasi"
+@theme "~/.config/rofi/theme/gruvbox-material-dark.rasi"
 
 // Main Window
 window {

@@ -1,63 +1,54 @@
 #!/bin/bash
+#  ██╗    ██╗ █████╗ ██╗     ██╗     ██████╗  █████╗ ██████╗ ███████╗██████╗
+#  ██║    ██║██╔══██╗██║     ██║     ██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗
+#  ██║ █╗ ██║███████║██║     ██║     ██████╔╝███████║██████╔╝█████╗  ██████╔╝
+#  ██║███╗██║██╔══██║██║     ██║     ██╔═══╝ ██╔══██║██╔═══╝ ██╔══╝  ██╔══██╗
+#  ╚███╔███╔╝██║  ██║███████╗███████╗██║     ██║  ██║██║     ███████╗██║  ██║
+#   ╚══╝╚══╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝     ╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝
+#
+#  ██╗      █████╗ ██╗   ██╗███╗   ██╗ ██████╗██╗  ██╗███████╗██████╗
+#  ██║     ██╔══██╗██║   ██║████╗  ██║██╔════╝██║  ██║██╔════╝██╔══██╗
+#  ██║     ███████║██║   ██║██╔██╗ ██║██║     ███████║█████╗  ██████╔╝
+#  ██║     ██╔══██║██║   ██║██║╚██╗██║██║     ██╔══██║██╔══╝  ██╔══██╗
+#  ███████╗██║  ██║╚██████╔╝██║ ╚████║╚██████╗██║  ██║███████╗██║  ██║
+#  ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+#	originally written by: gh0stzk - https://github.com/gh0stzk/dotfiles
+#	rewritten for hyprland by :	 develcooking - https://github.com/develcooking/hyprland-dotfiles
+#	Info    - This script runs the rofi launcher, to select
+#             the wallpapers included in the theme you are in.
 
-# Directories
-wallpapers_dir="$HOME/Pictures/Wallpapers/"
+# Set some variables
+wall_dir="/home/s1mple/Pictures/Wallpapers/"
+cacheDir="${HOME}/.cache/jp/${theme}"
+rofi_command="rofi -x11 -dmenu -theme /home/s1mple/.config/rofi/scripts/wallpaper/style.rasi -theme-str ${rofi_override}"
 
-RANDOM_PIC=$(find "${wallpapers_dir}" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" \) | shuf -n 1)
-
-build_theme() {
-  rows=$1
-  cols=$2
-  icon_size=$3
-
-  echo "element{orientation:vertical;}element-text{horizontal-align:0.5;}element-icon{size:$icon_size.0000em;}listview{lines:$rows;columns:$cols;}"
-}
-
-theme="$HOME/.config/rofi/scripts/wallpaper/style.rasi"
-
-rofi_cmd="rofi -dmenu -i -show-icons -theme-str $(build_theme 4 3 7) -theme ${theme}"
-
-# Select a wallpaper from the list
-choice=$(
-  {
-    printf "%s\x00icon\x1f%s\n" "random" "$RANDOM_PIC"
-    printf "%s\x00icon\x1f%s\n" "non-cat" "$RANDOM_PIC_2"
-    ls --escape "$wallpapers_dir" |
-      while read -r A; do
-        echo -en "$A\x00icon\x1f$wallpapers_dir/$A\n"
-      done
-  } | $rofi_cmd
-)
-
-# Handle choice
-if [ "$choice" = "random" ]; then
-  ~/.local/bin/walls set "$RANDOM_PIC"
-  exit 1
-elif [ "$choice" = "non-cat" ]; then
-  non_cat_choice=$(
-    find "$non_cat_dir" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" \) |
-      while read -r A; do
-        echo -en "$(basename "$A")\x00icon\x1f$A\n"
-      done | $rofi_cmd
-  )
-  wallpaper="$non_cat_dir/$non_cat_choice"
-  wallpaper_path="$HOME/Pictures/walls/non-cat/$choice"
-else
-  wallpaper="$wallpapers_dir/$choice"
-  wallpaper_path="$HOME/Pictures/walls/$choice"
+# Create cache dir if not exists
+if [ ! -d "${cacheDir}" ]; then
+  mkdir -p "${cacheDir}"
 fi
 
-# Set the wallpaper using swww
-swww img "$wallpaper" \
-  --transition-bezier 0.5,1.19,.8,.4 \
-  --transition-type wipe \
-  --transition-duration 2 \
-  --transition-fps 75 && notify-send "Wallpaper Changed" -i "$wallpaper" --app-name=Wallpaper
+physical_monitor_size=24
+monitor_res=$(hyprctl monitors | grep -A2 Monitor | head -n 2 | awk '{print $1}' | grep -oE '^[0-9]+')
+dotsperinch=$(echo "scale=2; $monitor_res / $physical_monitor_size" | bc | xargs printf "%.0f")
+monitor_res=$(($monitor_res * $physical_monitor_size / $dotsperinch))
 
-# Call the update index script to update the current wallpaper index
-~/.local/bin/walls u $wallpaper_path
+rofi_override="element-icon{size:${monitor_res}px;border-radius:0px;}"
 
-# Ensure the current wallpaper is updated in the system
-~/.local/bin/setcurwall
+# Convert images in directory and save to cache dir
+for imagen in "$wall_dir"/*.{jpg,jpeg,png,webp}; do
+  if [ -f "$imagen" ]; then
+    nombre_archivo=$(basename "$imagen")
+    if [ ! -f "${cacheDir}/${nombre_archivo}" ]; then
+      convert -strip "$imagen" -thumbnail 500x500^ -gravity center -extent 500x500 "${cacheDir}/${nombre_archivo}"
+    fi
+  fi
+done
 
-exit 1
+# Select a picture with rofi
+wall_selection=$(find "${wall_dir}" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" \) -exec basename {} \; | sort | while read -r A; do echo -en "$A\x00icon\x1f""${cacheDir}"/"$A\n"; done | $rofi_command)
+
+# Set the wallpaper
+[[ -n "$wall_selection" ]] || exit 1
+swww img ${wall_dir}/${wall_selection}
+
+exit 0
